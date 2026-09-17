@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Karen Zamudio - Plan KarenFit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d0d;--card:#181818;--card2:#1f1f1f;--border:#2a2a2a;--red:#e8252a;--red2:#ff4a4f;--green:#22c55e;--text:#f0f0f0;--text2:#a0a0a0;--muted:#555;--accent:#e8b4c8;--accent2:#c4748f;color-scheme:dark;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;background:var(--bg);color-scheme:dark;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;max-width:430px;margin:0 auto;padding-bottom:84px;color-scheme:dark;}
+
+.bienvenida-card{margin:52px 20px 0;background:linear-gradient(135deg,rgba(232,37,42,0.15),rgba(232,37,42,0.03));border:1px solid rgba(232,37,42,0.3);border-radius:18px;padding:22px 20px;text-align:center;}
+
+/* SPLASH */
+.splash{position:fixed;inset:0;background:#0d0d0d;z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 0.6s ease,visibility 0.6s;}
+.splash.oculto{opacity:0;visibility:hidden;pointer-events:none;}
+.splash-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(232,37,42,0.18) 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(196,116,143,0.08) 0%,transparent 50%);}
+.splash-content{position:relative;text-align:center;padding:0 32px;animation:splashIn 0.8s ease;}
+@keyframes splashIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.splash-brand{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:6px;color:var(--red);margin-bottom:28px;}
+.splash-hola{font-size:16px;color:var(--text2);margin-bottom:4px;}
+.splash-nombre{font-family:'Barlow Condensed',sans-serif;font-size:64px;font-weight:900;text-transform:uppercase;color:#fff;line-height:0.95;letter-spacing:-1px;}
+.splash-linea{width:50px;height:3px;background:var(--red);border-radius:2px;margin:22px auto;}
+.splash-texto{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:32px;}
+.splash-texto strong{color:var(--red2);}
+.splash-btn{background:var(--red);color:#fff;border:none;border-radius:50px;padding:14px 36px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;box-shadow:0 0 24px rgba(232,37,42,0.4);transition:all 0.2s;}
+.splash-btn:hover{transform:scale(1.04);box-shadow:0 0 32px rgba(232,37,42,0.6);}
+@media (prefers-reduced-motion:reduce){.splash-content{animation:none;}}
+/* STREAK TOP */
+.streak-hero{margin:52px 20px 0;background:linear-gradient(135deg,#1f0a0b 0%,#181818 60%);border:1px solid rgba(232,37,42,0.3);border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;}
+.streak-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 85% 30%,rgba(232,37,42,0.15) 0%,transparent 60%);pointer-events:none;}
+.streak-flame{width:54px;height:54px;background:rgba(232,37,42,0.15);border:1px solid rgba(232,37,42,0.3);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;position:relative;z-index:1;}
+.streak-days{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--text);line-height:1;}
+.streak-days span{color:var(--red);}
+.streak-sub{font-size:12px;color:var(--text2);margin-top:3px;}
+.streak-info{position:relative;z-index:1;}
+/* WELCOME */
+.welcome-bar{padding:20px 20px 0;display:flex;align-items:flex-start;gap:14px;}
+.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--red),#8b1518);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff;flex-shrink:0;border:2px solid rgba(255,255,255,0.15);box-shadow:0 0 16px rgba(232,37,42,0.3);margin-top:4px;}
+.welcome-text .hola{font-size:13px;color:var(--text2);margin-bottom:2px;}
+.welcome-text .nombre{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;text-transform:uppercase;color:var(--text);line-height:0.95;letter-spacing:-0.5px;}
+.welcome-text .subtitulo{font-size:12px;color:var(--muted);margin-top:4px;}
+/* FRASE */
+.frase-dia{margin:16px 20px 0;background:linear-gradient(135deg,rgba(232,37,42,0.12),rgba(232,37,42,0.04));border:1px solid rgba(232,37,42,0.2);border-radius:14px;padding:14px 16px;font-size:13px;font-style:italic;color:var(--text);line-height:1.6;position:relative;}
+.frase-dia::before{content:'"';font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:rgba(232,37,42,0.3);position:absolute;top:2px;left:12px;line-height:1;}
+.frase-dia-text{padding-left:24px;display:block;}
+.logro-msg{margin:10px 20px 0;display:flex;align-items:center;gap:10px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--green);font-weight:600;}
+/* COACH */
+.coach-msg{margin:10px 20px 0;display:flex;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.coach-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),#8f4a63);overflow:hidden;border:2px solid rgba(232,180,200,0.3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#fff;}
+.coach-info .coach-name{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:2px;}
+.coach-info .coach-text{font-size:12px;color:var(--text2);line-height:1.5;font-style:italic;}
+/* PROGRESO */
+.meta-progress{margin:10px 20px 0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;}
+.meta-progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.meta-progress-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--text2);}
+.meta-progress-pct{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--red);}
+.meta-progress-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.meta-progress-fill{height:100%;background:linear-gradient(to right,#8b1518,var(--red),var(--red2));border-radius:4px;transition:width 1s ease;width:0%;}
+.meta-progress-context{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:8px;}
+.meta-progress-context strong{color:var(--text2);}
+/* METAS */
+.metas-card{margin:10px 20px 0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;}
+.metas-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.meta-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.meta-item:last-child{border-bottom:none;padding-bottom:0;}
+.meta-item-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;}
+.meta-item-text{font-size:13px;color:var(--text);}
+.meta-item-tag{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--red);text-transform:uppercase;}
+/* FECHA */
+.plan-updated{display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;font-size:11px;color:var(--muted);padding:14px 20px 0;letter-spacing:0.5px;}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,0.4);}50%{opacity:0.7;box-shadow:0 0 0 6px rgba(34,197,94,0);}}
+/* HERO (sin imagen, solo tipografia/gradiente) */
+.hero{margin-top:16px;background:linear-gradient(160deg,#1a0708 0%,#0d0d0d 55%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 10%,rgba(232,37,42,0.25) 0%,transparent 55%);}
+.hero-content{position:relative;padding:32px 20px 28px;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;}
+.hero-tag-icon{width:36px;height:36px;background:var(--red);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.hero-tag-text{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text2);}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,13vw,64px);font-weight:900;text-transform:uppercase;line-height:0.9;color:#fff;letter-spacing:-1px;margin-bottom:16px;}
+.hero-title span{color:var(--red);}
+.hero-badges{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.badge-xp{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);border-radius:50px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--green);}
+.badge-time{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--text2);}
+/* POS TAGS */
+.pos-tags{display:flex;gap:8px;padding:16px 20px;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.pos-tags::-webkit-scrollbar{display:none;}
+.pos-tag{flex-shrink:0;background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:1px;padding:5px 12px;border-radius:6px;}
+.pos-tag.outline{background:transparent;border:1px solid var(--border);color:var(--text2);}
+/* SECTIONS */
+.section{padding:32px 20px 0;}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--text2);margin-bottom:14px;}
+/* INFO */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.info-card{background:var(--card2);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.info-icon{width:38px;height:38px;background:rgba(232,37,42,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.info-label{font-size:11px;color:var(--text2);margin-bottom:2px;}
+.info-val{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--text);}
+.info-val span{color:var(--red);}
+/* MACROS */
+.macro-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.macro-row:last-child{margin-bottom:0;}
+.macro-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;width:90px;flex-shrink:0;}
+.macro-name.prot{color:var(--red2);}.macro-name.carb{color:#f59e0b;}.macro-name.fat{color:#60a5fa;}
+.macro-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.macro-fill{height:100%;border-radius:3px;}
+.macro-fill.prot{background:var(--red2);}.macro-fill.carb{background:#f59e0b;}.macro-fill.fat{background:#60a5fa;}
+.macro-val{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--text);width:50px;text-align:right;flex-shrink:0;}
+/* MEALS */
+.meal-slot{background:var(--card);border-radius:16px;margin-bottom:14px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:border-color 0.2s;}
+.meal-slot:hover,.meal-slot.open{border-color:rgba(232,37,42,0.4);}
+.meal-top{display:flex;align-items:center;gap:12px;padding:14px 16px;}
+.meal-num{width:36px;height:36px;border-radius:10px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#fff;flex-shrink:0;}
+.meal-info{flex:1;}
+.meal-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--text);line-height:1.1;}
+.meal-time{font-size:12px;color:var(--text2);margin-top:2px;}
+.meal-kcal{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--red);line-height:1;}
+.meal-kcal-lbl{font-size:10px;color:var(--muted);text-align:right;letter-spacing:1px;text-transform:uppercase;}
+.meal-chevron{color:var(--muted);font-size:14px;margin-left:4px;transition:transform 0.25s;flex-shrink:0;}
+.meal-slot.open .meal-chevron{transform:rotate(180deg);}
+.meal-body{display:none;border-top:1px solid var(--border);}
+.meal-slot.open .meal-body{display:block;}
+.food-item{display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.food-item:last-child{border-bottom:none;}
+.food-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;margin-right:10px;}
+.food-name{flex:1;font-size:13px;color:var(--text);}
+.food-qty{font-size:12px;font-weight:600;color:var(--red2);margin-right:12px;}
+.meal-note-bar{padding:10px 16px;background:rgba(232,37,42,0.06);border-top:1px solid rgba(232,37,42,0.15);font-size:12px;color:var(--text2);font-style:italic;}
+/* RACHA */
+.racha-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px 20px;text-align:center;position:relative;overflow:hidden;}
+.racha-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(232,37,42,0.1) 0%,transparent 60%);pointer-events:none;}
+.racha-big{font-family:'Barlow Condensed',sans-serif;font-size:88px;font-weight:900;color:var(--red);line-height:1;display:block;}
+.racha-sub{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--text2);margin-bottom:18px;}
+.racha-btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;border:none;border-radius:50px;padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;}
+.racha-btn:hover{opacity:0.85;}
+.racha-btn:disabled{background:var(--card2);color:var(--muted);cursor:default;}
+.racha-status{font-size:12px;color:var(--muted);margin-top:10px;}
+.racha-status.ok{color:var(--green);}.racha-status.alert{color:var(--red2);}
+/* AGUA */
+.agua-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px;}
+.agua-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.agua-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:1px;}
+.agua-count-big{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:#60a5fa;line-height:1;}
+.agua-meta{font-size:11px;color:var(--text2);margin-top:2px;}
+.vasos-grid{display:flex;gap:8px;justify-content:center;margin-bottom:12px;}
+.vaso{width:40px;height:50px;border-radius:8px;border:2px solid var(--border);background:var(--bg);cursor:pointer;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s;}
+.vaso::before{content:'';position:absolute;bottom:0;left:0;right:0;height:0%;background:linear-gradient(to top,rgba(96,165,250,0.7),rgba(96,165,250,0.2));transition:height 0.3s ease;}
+.vaso.lleno{border-color:#60a5fa;}
+.vaso.lleno::before{height:100%;}
+.vaso-icon{position:relative;z-index:1;font-size:18px;opacity:0.2;transition:opacity 0.2s;}
+.vaso.lleno .vaso-icon{opacity:1;}
+.agua-bar-wrap{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:8px;}
+.agua-bar-fill{height:100%;background:linear-gradient(to right,#3b82f6,#93c5fd);border-radius:2px;transition:width 0.3s;}
+.agua-msg{font-size:11px;color:var(--muted);text-align:center;}
+/* DAY NAV */
+.day-nav-wrap{padding:20px 20px 0;}
+.day-nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
+.day-nav::-webkit-scrollbar{display:none;}
+.day-btn{flex-shrink:0;padding:8px 14px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text2);cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.day-btn:hover{border-color:var(--red);color:var(--red);}
+.day-btn.active{background:var(--red);border-color:var(--red);color:#fff;}
+.day-panel{display:none;}.day-panel.active{display:block;}
+.day-header{padding:16px 20px 0;}
+.day-title-big{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;color:var(--text);letter-spacing:-0.5px;margin-bottom:2px;}
+.day-subtitle{font-size:12px;color:var(--text2);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+.meals-wrap{padding:0 20px;}
+/* EJERCICIOS */
+.ej-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.ej-item{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.ej-item:last-child{border-bottom:none;}
+.ej-item .food-dot{margin-top:7px;}
+.ej-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--text);}
+.ej-det{font-size:12px;color:var(--text2);margin-top:1px;}
+.ej-det strong{color:var(--red2);}
+.alerta-medica{display:flex;gap:12px;background:rgba(232,37,42,0.08);border:1px solid rgba(232,37,42,0.25);border-radius:14px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.6;}
+.alerta-medica strong{color:var(--red2);}
+.ej-grupo{margin:8px 12px;background:rgba(232,37,42,0.05);border:1px solid rgba(232,37,42,0.25);border-radius:12px;overflow:hidden;}
+.ej-grupo-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red2);padding:8px 14px 4px;}
+.ej-sub{display:flex;align-items:flex-start;gap:10px;padding:8px 14px;}
+.ej-sub:last-child{padding-bottom:12px;}
+.ej-sub-dot{width:6px;height:6px;border-radius:50%;background:var(--red2);flex-shrink:0;margin-top:7px;box-shadow:0 0 6px rgba(255,74,79,0.6);}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.tip-card{background:var(--card2);border-radius:14px;padding:16px;}
+.tip-icon{font-size:24px;margin-bottom:8px;display:block;}
+.tip-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+.tip-text{font-size:12px;color:var(--text2);line-height:1.5;}
+/* FOOTER */
+.footer{padding:40px 20px 60px;text-align:center;}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin-bottom:4px;}
+.footer-sub{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:12px 24px;border-radius:50px;}
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(18,18,18,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-around;padding:10px 0 calc(10px + env(safe-area-inset-bottom));z-index:999;}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:4px 12px;border-radius:12px;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.nav-item .nav-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform 0.2s;}
+.nav-item .nav-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);transition:color 0.2s;}
+.nav-item.active{background:rgba(232,37,42,0.1);box-shadow:0 0 16px rgba(232,37,42,0.15) inset;}
+.nav-item.active .nav-label{color:var(--red);}
+.nav-item.active .nav-icon{transform:scale(1.1);filter:drop-shadow(0 0 6px rgba(232,37,42,0.6));}
+.nav-center-btn{width:46px;height:46px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;box-shadow:0 0 14px rgba(232,37,42,0.35);transition:all 0.2s;-webkit-tap-highlight-color:transparent;margin-top:-6px;}
+.nav-center-btn:hover{transform:scale(1.05);}
+/* TABS */
+.tab-section{display:none;}
+.tab-section.active{display:block;animation:tabFadeIn 0.35s ease;}
+@keyframes tabFadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion:reduce){.tab-section.active{animation:none;}.pulse-dot{animation:none;}}
+
+.compra-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.compra-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.04);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.compra-item:last-child{border-bottom:none;}
+.compra-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;}
+.compra-check-icon{color:#fff;font-size:12px;opacity:0;}
+.compra-item.comprado .compra-check{background:var(--green);border-color:var(--green);}
+.compra-item.comprado .compra-check-icon{opacity:1;}
+.compra-item.comprado .compra-name{color:var(--muted);text-decoration:line-through;}
+.compra-name{font-size:13px;color:var(--text);}
+.medidas-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.medida-item{background:var(--card2);border-radius:12px;padding:12px;text-align:center;}
+.medida-val{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--red);}
+.medida-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="splash" id="splash"><div class="splash-glow"></div><div class="splash-content"><div class="splash-brand">KARENFIT</div><div class="splash-hola" id="splashSaludo">Bienvenida</div><div class="splash-nombre">Karen Z.</div><div class="splash-linea"></div><div class="splash-texto">Este plan fue disenado <strong>especialmente para ti</strong>.<br>A construir masa muscular con tecnica y cuidando tu ciatica en cada entreno.</div><button class="splash-btn" onclick="entrarPlan()">Ver mi plan &#8594;</button></div></div>
+<!-- TAB PLAN -->
+<div class="tab-section active" id="tab-plan">
+<div class="streak-hero"><div class="streak-flame">&#128293;</div><div class="streak-info"><div class="streak-days"><span id="streakTopNum">0</span> dias</div><div class="streak-sub" id="streakTopSub">siguiendo tu plan</div></div></div>
+<div class="welcome-bar"><div class="avatar">K</div><div class="welcome-text"><div class="hola" id="saludoHora">Bienvenida</div><div class="nombre">Karen</div><div class="subtitulo">Tu plan personalizado de transformacion</div></div></div>
+<div class="frase-dia"><span class="frase-dia-text" id="fraseDia">Hoy es un gran dia para acercarte a tu objetivo.</span></div>
+<div class="logro-msg" id="logroMsg" style="display:none;"><span>&#127942;</span><span id="logroText"></span></div>
+<div class="coach-msg"><div class="coach-avatar">K</div><div class="coach-info"><div class="coach-name">Mensaje de Karen</div><div class="coach-text">Karen, vamos por mas masa muscular cuidando tu ciatica: tecnica controlada antes que peso, sin prisa en las cargas axiales. Tu proteina alta en cada comida es la base para crecer. Constancia con las 3 sesiones semanales y vas a ver el cambio.</div></div></div>
+<div class="meta-progress"><div class="meta-progress-top"><span class="meta-progress-label">&#128200; Progreso hacia tu meta</span><span class="meta-progress-pct" id="metaPct">0%</span></div><div class="meta-progress-bar"><div class="meta-progress-fill" id="metaFill" data-target="20"></div></div><div class="meta-progress-context"><span>Enfoque: <strong>Ganar masa</strong></span><span>Proteina: <strong>120g</strong></span><span>Meta: <strong>hipertrofia</strong></span></div></div>
+<div class="metas-card"><div class="metas-title">&#127942; Proxima meta</div><div class="meta-item"><div class="meta-item-check"></div><span class="meta-item-text">Ganar masa muscular cuidando la ciatica</span><span class="meta-item-tag">objetivo</span></div><div class="meta-item"><div class="meta-item-check"></div><span class="meta-item-text">Cumplir 14 dias seguidos</span><span class="meta-item-tag" id="metaRachaTag">faltan 14</span></div><div class="meta-item"><div class="meta-item-check"></div><span class="meta-item-text">Tecnica antes que peso en cada ejercicio</span><span class="meta-item-tag">prioridad</span></div></div>
+<div class="plan-updated"><span class="pulse-dot"></span><span id="fechaViva">Actualizado hoy</span></div>
+<div class="hero"><div class="hero-content"><div class="hero-tag"><div class="hero-tag-icon">&#127869;</div><span class="hero-tag-text">Nutricion + Entreno</span></div><div class="hero-title">PLAN<br><span>NUTRI</span>CIONAL</div><div class="hero-badges"><div class="badge-xp">&#127942; 2,050 kcal/dia</div><div class="badge-time">&#128336; 5 comidas</div></div></div></div>
+<div class="pos-tags"><div class="pos-tag">GANAR MASA</div><div class="pos-tag outline">SUPERAVIT +300</div><div class="pos-tag outline">PROTEINA ALTA</div><div class="pos-tag outline">3 DIAS GYM</div></div>
+<div class="section"><div class="section-title">Datos del Plan</div><div class="info-grid"><div class="info-card"><div class="info-icon">&#127919;</div><div><div class="info-label">Objetivo</div><div class="info-val"><span>Ganar masa</span></div></div></div><div class="info-card"><div class="info-icon">&#9878;</div><div><div class="info-label">Peso</div><div class="info-val">58 <span>kg</span></div></div></div><div class="info-card"><div class="info-icon">&#128207;</div><div><div class="info-label">Estatura</div><div class="info-val">1.58 <span>m</span></div></div></div><div class="info-card"><div class="info-icon">&#128293;</div><div><div class="info-label">Superavit</div><div class="info-val"><span>+300</span> kcal</div></div></div></div></div>
+<div class="section"><div class="section-title">Macros Diarios</div><div style="background:var(--card);border-radius:16px;padding:18px;border:1px solid var(--border);"><div class="macro-row"><span class="macro-name prot">Proteina</span><div class="macro-bar"><div class="macro-fill prot" style="width:23%"></div></div><span class="macro-val">120g</span></div><div class="macro-row"><span class="macro-name carb">Carbos</span><div class="macro-bar"><div class="macro-fill carb" style="width:51%"></div></div><span class="macro-val">260g</span></div><div class="macro-row"><span class="macro-name fat">Grasas</span><div class="macro-bar"><div class="macro-fill fat" style="width:26%"></div></div><span class="macro-val">58g</span></div></div></div>
+<div class="day-nav-wrap"><div class="section-title" style="margin-bottom:12px;">Plan Semanal</div><div class="day-nav"><button class="day-btn active" onclick="showDay(0)">Lun</button><button class="day-btn" onclick="showDay(1)">Mar</button><button class="day-btn" onclick="showDay(2)">Mie</button><button class="day-btn" onclick="showDay(3)">Jue</button><button class="day-btn" onclick="showDay(4)">Vie</button><button class="day-btn" onclick="showDay(5)">Sab</button><button class="day-btn" onclick="showDay(6)">Dom</button></div></div>
+
+<div class="day-panel active" id="day-0"><div class="day-header"><div class="day-title-big">Lunes <span style="color:var(--red)">&middot;</span> Entreno</div><div class="day-subtitle">2,050 kcal &nbsp;&middot;&nbsp; 120g P &nbsp;&middot;&nbsp; 260g C &nbsp;&middot;&nbsp; 58g G</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Pre-entreno</div><div class="meal-time">4:45 AM</div></div><div style="text-align:right;"><div class="meal-kcal">300</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso blanco</span><span class="food-qty">30g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Banano</span><span class="food-qty">1 unidad</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Post-entreno</div><div class="meal-time">8:30 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pechuga de pollo</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arroz blanco</span><span class="food-qty">100g cocido</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro asado</span><span class="food-qty">80g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">12:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">600</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pasta</span><span class="food-qty">70g seca</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Carne de res magra</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Aguacate</span><span class="food-qty">¼ unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso campesino</span><span class="food-qty">50g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas mixtas</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Almendras</span><span class="food-qty">15g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">05</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Tilapia al horno</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Papa cocida</span><span class="food-qty">100g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales salteados (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="day-panel" id="day-1"><div class="day-header"><div class="day-title-big">Martes <span style="color:var(--red)">&middot;</span> Entreno</div><div class="day-subtitle">2,050 kcal &nbsp;&middot;&nbsp; 120g P &nbsp;&middot;&nbsp; 260g C &nbsp;&middot;&nbsp; 58g G</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Pre-entreno</div><div class="meal-time">4:45 AM</div></div><div style="text-align:right;"><div class="meal-kcal">300</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Huevos revueltos</span><span class="food-qty">2 unidades</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Banano</span><span class="food-qty">½ unidad</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Post-entreno</div><div class="meal-time">8:30 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pechuga de pollo</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Pasta</span><span class="food-qty">60g seca</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Tomate natural</span><span class="food-qty">100g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">12:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">600</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Arroz blanco</span><span class="food-qty">90g cocido</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Mojarra frita al horno</span><span class="food-qty">200g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro</span><span class="food-qty">80g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Yogur natural sin azucar</span><span class="food-qty">170g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Nueces</span><span class="food-qty">15g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">05</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Carne de res magra</span><span class="food-qty">170g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales al vapor (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="day-panel" id="day-2"><div class="day-header"><div class="day-title-big">Miercoles <span style="color:var(--red)">&middot;</span> Entreno</div><div class="day-subtitle">2,050 kcal &nbsp;&middot;&nbsp; 120g P &nbsp;&middot;&nbsp; 260g C &nbsp;&middot;&nbsp; 58g G</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Pre-entreno</div><div class="meal-time">4:45 AM</div></div><div style="text-align:right;"><div class="meal-kcal">300</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso blanco</span><span class="food-qty">30g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas</span><span class="food-qty">100g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Post-entreno</div><div class="meal-time">8:30 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pechuga de pollo</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Papa cocida</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro</span><span class="food-qty">60g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">12:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">600</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pasta</span><span class="food-qty">70g seca</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Carne de res magra</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso rallado</span><span class="food-qty">20g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso campesino</span><span class="food-qty">50g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Fruta</span><span class="food-qty">1 unidad</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">05</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Salmon al horno</span><span class="food-qty">160g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro</span><span class="food-qty">60g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales salteados (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="day-panel" id="day-3"><div class="day-header"><div class="day-title-big">Jueves <span style="color:var(--red)">&middot;</span> Entreno</div><div class="day-subtitle">2,050 kcal &nbsp;&middot;&nbsp; 120g P &nbsp;&middot;&nbsp; 260g C &nbsp;&middot;&nbsp; 58g G</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Pre-entreno</div><div class="meal-time">4:45 AM</div></div><div style="text-align:right;"><div class="meal-kcal">300</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Huevos revueltos</span><span class="food-qty">2 unidades</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Banano</span><span class="food-qty">½ unidad</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Post-entreno</div><div class="meal-time">8:30 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pechuga de pollo</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arroz blanco</span><span class="food-qty">100g cocido</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro asado</span><span class="food-qty">60g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">12:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">600</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Papa cocida</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Tilapia al horno</span><span class="food-qty">200g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Aguacate</span><span class="food-qty">¼ unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Yogur natural sin azucar</span><span class="food-qty">170g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Almendras</span><span class="food-qty">15g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">05</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Carne de res magra</span><span class="food-qty">170g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Pasta</span><span class="food-qty">50g seca</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales al vapor (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="day-panel" id="day-4"><div class="day-header"><div class="day-title-big">Viernes <span style="color:var(--red)">&middot;</span> Entreno</div><div class="day-subtitle">2,050 kcal &nbsp;&middot;&nbsp; 120g P &nbsp;&middot;&nbsp; 260g C &nbsp;&middot;&nbsp; 58g G</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Pre-entreno</div><div class="meal-time">4:45 AM</div></div><div style="text-align:right;"><div class="meal-kcal">300</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa pequeña</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso blanco</span><span class="food-qty">30g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Banano</span><span class="food-qty">1 unidad</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Post-entreno</div><div class="meal-time">8:30 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pechuga de pollo</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Pasta</span><span class="food-qty">60g seca</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Tomate natural</span><span class="food-qty">100g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">12:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">600</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Arroz blanco</span><span class="food-qty">90g cocido</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Carne de res magra</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro</span><span class="food-qty">70g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso campesino</span><span class="food-qty">50g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas mixtas</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Nueces</span><span class="food-qty">15g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">05</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">350</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Mojarra al horno</span><span class="food-qty">200g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Papa cocida</span><span class="food-qty">100g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales salteados (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="day-panel" id="day-5"><div class="day-header"><div class="day-title-big">Sabado <span style="color:var(--red)">&middot;</span> Descanso</div><div class="day-subtitle">~Descanso</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Desayuno</div><div class="meal-time">7:00 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Huevos revueltos</span><span class="food-qty">2 unidades</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa mediana</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso blanco</span><span class="food-qty">30g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">1:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">650</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Arroz blanco</span><span class="food-qty">80g cocido</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Pollo asado</span><span class="food-qty">200g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro</span><span class="food-qty">80g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">400</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso campesino</span><span class="food-qty">50g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Almendras</span><span class="food-qty">20g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">550</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Salmon al horno</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Papa cocida</span><span class="food-qty">120g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales salteados (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="day-panel" id="day-6"><div class="day-header"><div class="day-title-big">Domingo <span style="color:var(--red)">&middot;</span> Descanso</div><div class="day-subtitle">~Descanso</div></div><div class="meals-wrap">
+<div class="meal-slot open" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">01</div><div class="meal-info"><div class="meal-name">Desayuno</div><div class="meal-time">8:00 AM</div></div><div style="text-align:right;"><div class="meal-kcal">450</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Huevos revueltos</span><span class="food-qty">2 unidades</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Arepa mediana</span><span class="food-qty">1 unidad</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Fruta fresca</span><span class="food-qty">1 unidad</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">02</div><div class="meal-info"><div class="meal-name">Almuerzo</div><div class="meal-time">1:30 PM</div></div><div style="text-align:right;"><div class="meal-kcal">650</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Pasta</span><span class="food-qty">70g seca</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Carne de res magra</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Queso rallado</span><span class="food-qty">20g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Ensalada (sin cebolla)</span><span class="food-qty">libre</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">03</div><div class="meal-info"><div class="meal-name">Merienda</div><div class="meal-time">4:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">400</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Yogur natural sin azucar</span><span class="food-qty">170g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Frutas</span><span class="food-qty">150g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Nueces</span><span class="food-qty">20g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+<div class="meal-slot" onclick="toggleMeal(this)"><div class="meal-top"><div class="meal-num">04</div><div class="meal-info"><div class="meal-name">Cena</div><div class="meal-time">8:00 PM</div></div><div style="text-align:right;"><div class="meal-kcal">550</div><div class="meal-kcal-lbl">kcal</div></div><div class="meal-chevron">&#9662;</div></div><div class="meal-body"><div class="food-item"><div class="food-dot"></div><span class="food-name">Tilapia al horno</span><span class="food-qty">180g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Platano maduro</span><span class="food-qty">80g</span></div><div class="food-item"><div class="food-dot"></div><span class="food-name">Vegetales al vapor (sin cebolla)</span><span class="food-qty">150g</span></div><div class="meal-note-bar">Sigue las porciones tal cual.</div></div></div>
+</div></div>
+
+<div class="section"><div class="section-title">Recomendaciones</div><div class="tips-grid"><div class="tip-card"><span class="tip-icon">&#128167;</span><div class="tip-name">Agua</div><div class="tip-text">2.5 litros minimo al dia.</div></div><div class="tip-card"><span class="tip-icon">&#129658;</span><div class="tip-name">Tu ciatica</div><div class="tip-text">Tecnica controlada, sin sobrecarga axial. Sube el peso solo cuando la tecnica sea perfecta.</div></div><div class="tip-card"><span class="tip-icon">&#127869;</span><div class="tip-name">Sin granos</div><div class="tip-text">Reemplazamos frijol/lenteja por arroz, pasta, arepa, platano y papa.</div></div><div class="tip-card"><span class="tip-icon">&#128564;</span><div class="tip-name">Sueno</div><div class="tip-text">7-8 horas para recuperar y crecer.</div></div></div></div>
+</div>
+<!-- TAB AGUA -->
+<div class="tab-section" id="tab-agua"><div class="section" style="padding-top:52px;"><div class="section-title">Hidratacion</div><div class="agua-card"><div class="agua-header"><div><div class="agua-title">&#128167; Agua del dia</div><div class="agua-meta">Meta: 2.5 litros &middot; 8 vasos</div></div><div style="text-align:right;"><div class="agua-count-big"><span id="aguaCount">0</span>/8</div></div></div><div class="vasos-grid" id="vasosGrid"></div><div class="agua-bar-wrap"><div class="agua-bar-fill" id="aguaBar" style="width:0%"></div></div><div class="agua-msg" id="aguaMsg">Toca cada gota cuando tomes un vaso</div></div></div></div>
+<!-- TAB RACHA -->
+<div class="tab-section" id="tab-racha"><div class="section" style="padding-top:52px;"><div class="section-title">Mi Racha</div><div class="racha-card"><span class="racha-big" id="rachaNum">0</span><div class="racha-sub">dias consecutivos</div><button class="racha-btn" id="rachaBtn" onclick="marcarDia()">&#10003; Marcar dia de hoy</button><div class="racha-status" id="rachaStatus">Empieza tu racha hoy</div><div id="rachaMotiv" style="font-size:12px;color:var(--red2);margin-top:10px;font-style:italic;display:none;"></div></div></div></div>
+<!-- TAB ENTRENO -->
+<div class="tab-section" id="tab-entreno"><div style="padding-top:32px;"></div>
+<div class="section" style="padding-top:24px;"><div class="section-title">Lunes &middot; Cuadriceps y Pantorrilla</div><div class="ej-card"><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">CAMINATA LATERAL</div><div class="ej-det">3 Series &middot; 10 pasos ida · 10 pasos vuelta</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">EXTENSION DE RODILLAS</div><div class="ej-det">5 Series &middot; 10 reps · Última: Drop Set 6/6/6</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">SENTADILLA LIBRE</div><div class="ej-det">5 Series &middot; 10 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">PRENSA</div><div class="ej-det">5 Series &middot; Última: Drop Set</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">ELEVACION DE TALONES (PANTORRILLA)</div><div class="ej-det">4 Series &middot; 15 reps</div></div></div></div></div>
+<div class="section" style="padding-top:24px;"><div class="section-title">Martes &middot; Hombros, Biceps y Triceps</div><div class="ej-card"><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; TRISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">PRESS MILITAR</div><div class="ej-det">Serie combinada</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">VUELOS LATERALES</div><div class="ej-det">15 reps</div></div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">VUELOS FRONTALES</div><div class="ej-det">4 Series &middot; 15 reps</div></div></div><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; TRISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">CURL MANCUERNAS AGARRE NEUTRO</div><div class="ej-det">10 reps unilateral</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">CURL CON BARRA AGARRE SUPINO</div><div class="ej-det">Serie combinada</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">CURL MANCUERNAS CONCENTRADO SUPINO</div><div class="ej-det">10 reps concentradas</div></div></div></div><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; TRISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">ROMPECRANEOS CON BARRA</div><div class="ej-det">5 Series &middot; 15 reps</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">EXTENSION EN COPA UNILATERAL</div><div class="ej-det">15 reps cada brazo</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">FONDOS EN BANCO</div><div class="ej-det">Serie combinada</div></div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">ABDOMEN</div><div class="ej-det">Segun indicacion en gimnasio</div></div></div></div></div>
+<div class="section" style="padding-top:24px;"><div class="section-title">Miercoles &middot; Gluteo y Pantorrilla</div><div class="ej-card"><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; BISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">HIP THRUST</div><div class="ej-det">4 Series &middot; 10 reps</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">PESO MUERTO CON BARRA</div><div class="ej-det">Serie combinada</div></div></div></div><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; BISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">BULGARA</div><div class="ej-det">5 Series &middot; 10 reps</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">SEGUNDA VARIANTE BULGARA</div><div class="ej-det">Serie combinada</div></div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">ABDUCCION</div><div class="ej-det">4 Series &middot; 10 reps · Pesadas</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">PATADA DE GLUTEO EN POLEA</div><div class="ej-det">4 Series &middot; 10 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">PANTORRILLA</div><div class="ej-det">4 Series &middot; 15 reps</div></div></div></div></div>
+<div class="section" style="padding-top:24px;"><div class="section-title">Jueves &middot; Espalda</div><div class="ej-card"><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; BISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">JALON ABIERTO</div><div class="ej-det">5 Series &middot; 20 reps</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">JALON CERRADO</div><div class="ej-det">Serie combinada</div></div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">REMO SENTADO</div><div class="ej-det">5 Series &middot; 15 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">REMO CON BARRA AGARRE SUPINO</div><div class="ej-det">4 Series &middot; 20 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">REMO UNILATERAL</div><div class="ej-det">4 Series &middot; 10 reps cada brazo</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">ABDOMEN</div><div class="ej-det">Segun indicacion en gimnasio</div></div></div></div></div>
+<div class="section" style="padding-top:24px;"><div class="section-title">Viernes &middot; Femoral y Pantorrilla</div><div class="ej-card"><div class="ej-grupo"><div class="ej-grupo-tag">&#128279; BISERIE</div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">CURL ACOSTADO</div><div class="ej-det">4 Series &middot; 10 reps · Pesadas</div></div></div><div class="ej-sub"><div class="ej-sub-dot"></div><div><div class="ej-name">ADUCTORES</div><div class="ej-det">4 Series &middot; 15 reps</div></div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">PESO MUERTO CON BARRA SOBRE STEP</div><div class="ej-det">4 Series &middot; 10 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">SENTADILLA SUMO</div><div class="ej-det">4 Series &middot; 15 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">CURL SENTADO</div><div class="ej-det">4 Series &middot; 10 reps · Última: Drop Set</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">PESO MUERTO UNILATERAL</div><div class="ej-det">4 Series &middot; 10 reps</div></div></div><div class="ej-item"><div class="food-dot"></div><div class="ej-info"><div class="ej-name">PANTORRILLA</div><div class="ej-det">4 Series &middot; 15 reps</div></div></div></div></div>
+<div style="height:20px;"></div></div>
+<!-- TAB PERFIL -->
+<div class="tab-section" id="tab-perfil"><div class="section" style="padding-top:52px;"><div class="section-title">Mi Perfil</div><div style="background:var(--card);border-radius:16px;padding:24px 20px;border:1px solid var(--border);margin-bottom:10px;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:16px;">Karen Zamudio</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div style="background:var(--card2);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--red);">2,050</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">kcal</div></div><div style="background:var(--card2);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--red);">+300</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">superavit</div></div><div style="background:var(--card2);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--red);">120g</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">proteina</div></div><div style="background:var(--card2);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:var(--red);">3</div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">dias gym</div></div></div>
+<div class="metas-title" style="margin-top:18px;">Medidas iniciales</div><div class="medidas-grid"><div class="medida-item"><div class="medida-val">58kg</div><div class="medida-lbl">Peso</div></div><div class="medida-item"><div class="medida-val">72cm</div><div class="medida-lbl">Cintura</div></div><div class="medida-item"><div class="medida-val">95cm</div><div class="medida-lbl">Cadera</div></div><div class="medida-item"><div class="medida-val">85cm</div><div class="medida-lbl">Pecho</div></div><div class="medida-item"><div class="medida-val">58/58cm</div><div class="medida-lbl">Pierna D/I</div></div><div class="medida-item"><div class="medida-val">33/34cm</div><div class="medida-lbl">Pant D/I</div></div><div class="medida-item"><div class="medida-val">26/25cm</div><div class="medida-lbl">Biceps D/I</div></div><div class="medida-item"><div class="medida-val">100cm</div><div class="medida-lbl">Hombros</div></div></div>
+<div style="margin-top:14px;background:rgba(232,37,42,0.06);border:1px solid rgba(232,37,42,0.2);border-radius:12px;padding:12px 14px;font-size:12px;color:var(--text2);line-height:1.6;"><strong style="color:var(--red2);">Nota medica:</strong> Dolor de ciatica: tecnica controlada, priorizar rango de movimiento antes que carga. Cirugia previa (Pomeroy) sin restricciones actuales para el entrenamiento. No consume granos (frijol/lenteja) — reemplazados por arroz, pasta, arepa, platano y papa. Evitar comida de mar (mariscos); si consume pescado (mojarra, salmon, tilapia). Minimizar cebolla en las preparaciones.</div></div>
+<a class="wa-btn" href="https://wa.me/573114579957" style="display:flex;justify-content:center;margin-top:16px;text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="margin-right:8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.526 5.854L.057 23.117a.75.75 0 0 0 .938.882l5.41-1.418A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.712 9.712 0 0 1-4.962-1.361l-.355-.212-3.684.966.982-3.594-.232-.37A9.712 9.712 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>Contactar a KarenFit</a></div></div>
+<!-- TAB COMPRAS -->
+<div class="tab-section" id="tab-compras"><div class="section" style="padding-top:52px;"><div class="section-title">Lista de Compras</div><div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Items de tu plan. Marca lo comprado; queda guardado.</div><div class="compra-card">
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c0"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Pechuga de pollo (1.5kg)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c1"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Carne de res magra (1kg)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c2"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Tilapia (400g)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c3"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Mojarra (400g)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c4"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Salmon (350g)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c5"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Huevos (18 unidades)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c6"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Queso blanco / campesino (300g)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c7"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Yogur natural sin azucar (4 unidades)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c8"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Arepas (paquete)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c9"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Arroz blanco (1kg)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c10"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Pasta (500g)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c11"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Papa (1kg)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c12"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Platano maduro (1 racimo)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c13"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Banano (1 racimo)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c14"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Frutas variadas (segun gusto)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c15"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Aguacate (4 unidades)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c16"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Tomate (6 unidades)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c17"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Lechuga / vegetales de ensalada</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c18"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Vegetales para saltear (sin cebolla)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c19"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Aceite de oliva</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c20"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Almendras (150g)</span></div>
+<div class="compra-item" onclick="toggleCompra(this)" data-id="c21"><div class="compra-check"><span class="compra-check-icon">&#10003;</span></div><span class="compra-name">Nueces (150g)</span></div>
+</div><div style="padding-top:20px;"><button class="racha-btn" style="width:100%;" onclick="resetCompras()">&#128465; Resetear lista</button></div></div><div style="height:20px;"></div></div>
+<div class="footer"><div class="footer-logo">KarenFit</div><div class="footer-sub">Nutricion &middot; Entrenamiento &middot; Resultados</div></div>
+<div class="bottom-nav"><div class="nav-item active" onclick="switchTab('plan')" id="nav-plan"><div class="nav-icon">&#127869;</div><span class="nav-label">Plan</span></div><div class="nav-item" onclick="switchTab('agua')" id="nav-agua"><div class="nav-icon">&#128167;</div><span class="nav-label">Agua</span></div><div class="nav-center-btn" onclick="switchTab('racha')" id="nav-racha">&#128293;</div><div class="nav-item" onclick="switchTab('entreno')" id="nav-entreno"><div class="nav-icon">&#127947;</div><span class="nav-label">Entreno</span></div><div class="nav-item" onclick="switchTab('compras')" id="nav-compras"><div class="nav-icon">&#128722;</div><span class="nav-label">Compras</span></div><div class="nav-item" onclick="switchTab('perfil')" id="nav-perfil"><div class="nav-icon">&#128100;</div><span class="nav-label">Perfil</span></div></div>
+<script>
+function hoy(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+var FRASES_DIA=["Hoy es un gran dia para acercarte a tu objetivo.","La disciplina de hoy es el musculo de manana.","No tienes que ser perfecta, solo constante.","Cada comida cumplida es una promesa que te haces a ti misma.","El progreso no siempre se ve en el espejo, pero siempre esta pasando.","Un dia mas cumpliendo es un dia menos para tu meta.","Tu unica competencia es la persona que fuiste ayer."];
+var FRASES_RACHA=["No pares ahora Karen. Cada dia suma.","Un dia sin marcar rompe todo. Marca hoy.","Tu racha te esta esperando.","Las que llegan lejos no se rinden.","Recuerda por que empezaste."];
+function switchTab(tab){
+  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+  var navEl=document.getElementById('nav-'+tab);
+  if(navEl)navEl.classList.add('active');
+  var rc=document.getElementById('nav-racha');
+  if(rc)rc.style.boxShadow=tab==='racha'?'0 0 32px rgba(232,37,42,0.8)':'0 0 14px rgba(232,37,42,0.35)';
+  document.querySelectorAll('.tab-section').forEach(function(s){s.classList.remove('active');});
+  var el=document.getElementById('tab-'+tab);
+  if(el){el.classList.add('active');window.scrollTo(0,0);}
+}
+function showDay(i){document.querySelectorAll('.day-panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.day-btn').forEach(function(b){b.classList.remove('active');});document.getElementById('day-'+i).classList.add('active');document.querySelectorAll('.day-btn')[i].classList.add('active');var fc=document.querySelector('#day-'+i+' .meal-slot');if(fc)fc.classList.add('open');}
+function toggleMeal(c){c.classList.toggle('open');}
+function cargarRacha(){
+  var data=JSON.parse(localStorage.getItem('kz_racha')||'{"dias":0,"ultimo":null}');
+  var hoyStr=hoy();var ayer=new Date();ayer.setDate(ayer.getDate()-1);
+  var ayerStr=ayer.getFullYear()+'-'+String(ayer.getMonth()+1).padStart(2,'0')+'-'+String(ayer.getDate()).padStart(2,'0');
+  var perdida=false;
+  if(data.ultimo&&data.ultimo!==hoyStr&&data.ultimo!==ayerStr){perdida=true;data.dias=0;localStorage.setItem('kz_racha',JSON.stringify(data));}
+  document.getElementById('rachaNum').textContent=data.dias;
+  var btn=document.getElementById('rachaBtn');var st=document.getElementById('rachaStatus');var mo=document.getElementById('rachaMotiv');
+  if(data.ultimo===hoyStr){btn.disabled=true;btn.textContent='Ya marcaste hoy';st.textContent='Racha activa! Vuelve manana.';st.className='racha-status ok';}
+  else if(perdida){btn.disabled=false;btn.textContent='Reiniciar racha';st.textContent='Se fue la racha. Empieza de nuevo.';st.className='racha-status alert';mo.textContent=FRASES_RACHA[Math.floor(Math.random()*FRASES_RACHA.length)];mo.style.display='block';}
+  else{btn.disabled=false;btn.textContent='Marcar dia de hoy';st.textContent=data.dias>0?'Llevas '+data.dias+' dias! Sigue.':'Empieza tu racha hoy';st.className=data.dias>0?'racha-status ok':'racha-status';}
+}
+function marcarDia(){var data=JSON.parse(localStorage.getItem('kz_racha')||'{"dias":0,"ultimo":null}');data.dias=(data.dias||0)+1;data.ultimo=hoy();localStorage.setItem('kz_racha',JSON.stringify(data));cargarRacha();cargarPersonalizacion();metaRachaUpdate();streakTop();}
+function cargarAgua(){
+  var hoyStr=hoy();var data=JSON.parse(localStorage.getItem('kz_agua')||'{"vasos":0,"fecha":null}');
+  if(data.fecha!==hoyStr){data.vasos=0;data.fecha=hoyStr;localStorage.setItem('kz_agua',JSON.stringify(data));}
+  var grid=document.getElementById('vasosGrid');grid.innerHTML='';
+  for(var i=0;i<8;i++){var v=document.createElement('div');v.className='vaso'+(i<data.vasos?' lleno':'');v.innerHTML='<span class="vaso-icon">&#128167;</span>';(function(idx){v.onclick=function(){tomarVaso(idx);};})(i);grid.appendChild(v);}
+  document.getElementById('aguaCount').textContent=data.vasos;
+  document.getElementById('aguaBar').style.width=(data.vasos/8*100)+'%';
+  var msgs=['Toca cada gota cuando tomes un vaso','Sigue asi Karen','Vas muy bien','Mitad del camino','Ya casi llegas','Meta cumplida! 2.5 litros'];
+  var mi=data.vasos===0?0:data.vasos<=2?1:data.vasos<=4?2:data.vasos<=5?3:data.vasos<8?4:5;
+  document.getElementById('aguaMsg').textContent=msgs[mi];
+}
+function tomarVaso(idx){var hoyStr=hoy();var data=JSON.parse(localStorage.getItem('kz_agua')||'{"vasos":0,"fecha":null}');if(data.fecha!==hoyStr){data.vasos=0;data.fecha=hoyStr;}if(idx===data.vasos&&data.vasos<8)data.vasos++;else if(idx===data.vasos-1&&data.vasos>0)data.vasos--;localStorage.setItem('kz_agua',JSON.stringify(data));cargarAgua();}
+function cargarPersonalizacion(){
+  var h=new Date().getHours();
+  var saludo=h<12?'Buenos dias':h<18?'Buenas tardes':'Buenas noches';
+  var el=document.getElementById('saludoHora');
+  if(el)el.textContent=saludo+' \ud83d\udc4b';
+  var dayIdx=new Date().getDate()%FRASES_DIA.length;
+  var fr=document.getElementById('fraseDia');
+  if(fr)fr.textContent=FRASES_DIA[dayIdx];
+  var data=JSON.parse(localStorage.getItem('kz_racha')||'{"dias":0}');
+  if(data.dias>0){
+    var lm=document.getElementById('logroMsg');var lt=document.getElementById('logroText');
+    if(lm&&lt){lm.style.display='flex';lt.textContent='Llevas '+data.dias+' dia'+(data.dias>1?'s':'')+' cumpliendo tu plan, sigue asi.';}
+  }
+}
+function animarProgreso(){
+  var fill=document.getElementById('metaFill');var pct=document.getElementById('metaPct');
+  if(!fill||!pct)return;
+  var target=parseInt(fill.dataset.target);
+  setTimeout(function(){
+    fill.style.width=target+'%';
+    var current=0;
+    var interval=setInterval(function(){current+=1;pct.textContent=current+'%';if(current>=target)clearInterval(interval);},1000/target*0.8);
+  },300);
+}
+function fechaViva(){
+  var actualizado=new Date();
+  var ahora=new Date();
+  var dias=Math.floor((ahora-actualizado)/86400000);
+  var el=document.getElementById('fechaViva');
+  if(!el)return;
+  if(dias<=0)el.textContent='Actualizado hoy';
+  else if(dias===1)el.textContent='Actualizado ayer';
+  else if(dias<30)el.textContent='Actualizado hace '+dias+' dias';
+  else el.textContent='Actualizado hace '+Math.floor(dias/30)+' mes(es)';
+}
+function metaRachaUpdate(){
+  var data=JSON.parse(localStorage.getItem('kz_racha')||'{"dias":0}');
+  var el=document.getElementById('metaRachaTag');
+  if(!el)return;
+  var faltan=Math.max(14-data.dias,0);
+  el.textContent=faltan===0?'cumplida!':'faltan '+faltan;
+}
+function streakTop(){
+  var data=JSON.parse(localStorage.getItem('kz_racha')||'{"dias":0}');
+  var n=document.getElementById('streakTopNum');var s=document.getElementById('streakTopSub');
+  if(!n)return;
+  n.textContent=data.dias;
+  if(s)s.textContent=data.dias===0?'empieza tu plan hoy':data.dias===1?'siguiendo tu plan':'seguidos siguiendo tu plan';
+}
+function entrarPlan(){
+  var s=document.getElementById('splash');
+  if(s)s.classList.add('oculto');
+}
+function splashSaludo(){
+  var h=new Date().getHours();
+  var saludo=h<12?'Buenos dias':h<18?'Buenas tardes':'Buenas noches';
+  var el=document.getElementById('splashSaludo');
+  if(el)el.textContent=saludo+' \ud83d\udc4b';
+}
+function cargarCompras(){document.querySelectorAll('.compra-item').forEach(function(el){var id=el.getAttribute('data-id');if(localStorage.getItem('kz_compra_'+id)==='1')el.classList.add('comprado');});}
+function toggleCompra(el){var id=el.getAttribute('data-id');el.classList.toggle('comprado');localStorage.setItem('kz_compra_'+id,el.classList.contains('comprado')?'1':'0');}
+function resetCompras(){document.querySelectorAll('.compra-item').forEach(function(el){el.classList.remove('comprado');localStorage.setItem('kz_compra_'+el.getAttribute('data-id'),'0');});}
+window.onload=function(){splashSaludo();cargarCompras();cargarRacha();cargarAgua();cargarPersonalizacion();animarProgreso();fechaViva();metaRachaUpdate();streakTop();var fc=document.querySelector('#day-0 .meal-slot');if(fc)fc.classList.add('open');};
+</script>
+</body>
+</html>
